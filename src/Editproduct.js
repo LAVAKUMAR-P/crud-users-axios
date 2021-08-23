@@ -17,7 +17,6 @@ function Editproduct(props) {
       let product = await axios.get(
         `https://60efffc8f587af00179d3c3b.mockapi.io/product/${props.match.params.id}`
       );
-      console.log(product.data);
       setProductName(product.data.productName);
       setPrice(product.data.price);
     } catch (err) {
@@ -26,7 +25,7 @@ function Editproduct(props) {
   }
   fetchdata();
    // eslint-disable-next-line
-  }, [fetchdata]);
+  }, [props]);
 
   let handleSubmit = async (e) => {
     e.preventDefault();

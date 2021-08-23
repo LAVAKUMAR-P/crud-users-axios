@@ -15,7 +15,6 @@ let fetchdata=async()=>{
       let user = await axios.get(
         `https://60efffc8f587af00179d3c3b.mockapi.io/user/${props.match.params.id}`
       );
-      console.log(user);
       setUserName(user.data.name);
       setPosition(user.data.position);
       setEmail(user.data.email);
