@@ -6,9 +6,10 @@ function Users() {
   const [userList, setUserList] = useState([]);
   const [isLoading, setLoading] = useState(true);
 
-  useEffect(async () => {
+  useEffect( () => {
+    let fetchdata= async ()=>{
     try {
-      let Users = await axios(
+      let Users = await axios.get(
         "https://60efffc8f587af00179d3c3b.mockapi.io/user"
       );
       setUserList([...Users.data]);
@@ -16,6 +17,8 @@ function Users() {
     } catch (err) {
       window.alert("CHECK YOUR NETWORK");
     }
+  }
+  fetchdata();
     // eslint-disable-next-line
   }, []);
 

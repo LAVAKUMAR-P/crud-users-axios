@@ -9,7 +9,8 @@ function Edituser(props) {
   const [email, setEmail] = useState("");
   const [salary, setSalary] = useState("");
   const [isLoading, setLoading] = useState(false);
-  useEffect(async () => {
+  useEffect( () => {
+let fetchdata=async()=>{
     try {
       let user = await axios.get(
         `https://60efffc8f587af00179d3c3b.mockapi.io/user/${props.match.params.id}`
@@ -22,8 +23,10 @@ function Edituser(props) {
     } catch (err) {
       window.alert("check your network");
     }
+  }
+  fetchdata();
     // eslint-disable-next-line
-  }, []);
+  }, [props]);
 
   let handleSubmit = async (e) => {
     e.preventDefault();

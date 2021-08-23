@@ -11,7 +11,8 @@ function Editproduct(props) {
   const [productName, setProductName] = useState("");
   const [price, setPrice] = useState("");
   const [isLoading, setLoading] = useState(false);
-  useEffect(async () => {
+  useEffect(() => {
+   let  fetchdata= async ()=>{
     try {
       let product = await axios.get(
         `https://60efffc8f587af00179d3c3b.mockapi.io/product/${props.match.params.id}`
@@ -22,8 +23,10 @@ function Editproduct(props) {
     } catch (err) {
       console.log("Product edit errror" + err);
     }
+  }
+  fetchdata();
    // eslint-disable-next-line
-  }, []);
+  }, [fetchdata]);
 
   let handleSubmit = async (e) => {
     e.preventDefault();

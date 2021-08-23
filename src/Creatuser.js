@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useContext } from "react";
+import React from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
@@ -9,11 +9,11 @@ function Createuser() {
   const [position, setPosition] = useState("");
   const [email, setEmail] = useState("");
   const [salary, setSalary] = useState("");
-  const [isLoading, setLoading] = useState(true);
+  const[isLoading,setLoading]=useState(false);
   let handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
-      setLoading(true);
       await axios.post("https://60efffc8f587af00179d3c3b.mockapi.io/user", {
         name,
         position,
@@ -21,8 +21,8 @@ function Createuser() {
         salary,
       });
       history.push("/user");
-      setLoading(true);
     } catch (err) {
+      window.alert("Check your network");
       setLoading(false);
     }
   };
@@ -83,6 +83,7 @@ function Createuser() {
               type="submit"
               value="Submit"
               className="btn btn-primary mt-3"
+              disabled={isLoading}
             />
           </div>
         </div>

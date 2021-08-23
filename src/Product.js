@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 function Product() {
   const [prodList, setProdList] = useState([]);
   const [isLoading, setLoading] = useState(true);
-  useEffect(async () => {
+  useEffect(() => {
+    let fetchdata=async()=>{
     try {
       let products = await axios(
         "https://60efffc8f587af00179d3c3b.mockapi.io/product"
@@ -14,6 +15,8 @@ function Product() {
     } catch (err) {
       console.log("product data error in lavakumar");
     }
+  }
+  fetchdata();
     // eslint-disable-next-line
   }, []);
 
