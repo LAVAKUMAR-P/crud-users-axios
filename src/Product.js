@@ -7,7 +7,7 @@ function Product() {
   useEffect(() => {
     let fetchdata=async()=>{
     try {
-      let products = await axios(
+      let products = await axios.get(
         "https://60efffc8f587af00179d3c3b.mockapi.io/product"
       );
       setProdList([...products.data]);
